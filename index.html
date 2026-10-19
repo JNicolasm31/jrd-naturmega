@@ -216,7 +216,7 @@ details.rule summary{font-size:13px;color:var(--orange-ink)}
         <p class="hint">Ejemplo: se compromete con 1.000 kWh. Si falla por 50 kWh (5 %), no paga nada. Si falla por 100 kWh (10 %), paga 30 % del precio RD × 100 kWh. Durante los primeros 6 meses del programa (noviembre de 2026 a abril de 2027) no existe penalidad; desde mayo de 2027 se aplica.</p>
       </details>
     </div>
-    <p class="note">Se descuenta margen JULIA-RD del 6 % y GMF 4 × 1.000 (0,4 %) sobre el ingreso bruto, y la penalidad si hay desviación. Las horas y la reducción valen para todos los días en que participe.</p>
+    <p class="note">Se descuenta margen JULIA-RD del 10 % y GMF 4 × 1.000 (0,4 %) sobre el ingreso bruto, y la penalidad si hay desviación. Las horas y la reducción valen para todos los días en que participe.</p>
   </section>
 
   <div class="stack">
@@ -237,7 +237,7 @@ details.rule summary{font-size:13px;color:var(--orange-ink)}
         <thead><tr><th>Concepto</th><th id="thDay">Promedio por día elegido</th><th>Total del mes</th></tr></thead>
         <tbody>
           <tr><td>Ingreso bruto RD</td><td id="gD"></td><td id="gM"></td></tr>
-          <tr><td>Margen JULIA-RD · 6 %</td><td id="mD"></td><td id="mM"></td></tr>
+          <tr><td>Margen JULIA-RD · 10 %</td><td id="mD"></td><td id="mM"></td></tr>
           <tr><td>GMF · 4 × 1.000</td><td id="fD"></td><td id="fM"></td></tr>
           <tr><td id="pnLbl">Penalidad por desviación · 30 %</td><td id="pnD"></td><td id="pnM"></td></tr>
           <tr class="total"><td>Ingreso neto</td><td id="nD"></td><td id="nM"></td></tr>
@@ -302,7 +302,7 @@ details.rule summary{font-size:13px;color:var(--orange-ink)}
     <p class="hint" style="margin:0">Ingreso = LBC kWh-día × días × precio (USD/MWh) × TRM ÷ 1000, menos el margen de JULIA-RD y el GMF (4 × 1.000). La LBC kWh-día es la LBC diaria máxima registrada en JRD para la frontera (26.613 kWh-día).</p>
     <div class="ddvin">
       <label class="field"><span class="lbl">TRM de referencia (15 de octubre de 2026)</span><input type="number" id="trm" value="3197.65" min="0" step="0.01" inputmode="decimal"><small style="display:block;margin-top:6px;color:var(--muted);font-size:13px">COP por USD · última TRM del mes anterior, valor predeterminado (modificable)</small></label>
-      <div class="field"><span class="lbl">Margen JULIA-RD</span><div class="fixed">6 %</div></div>
+      <div class="field"><span class="lbl">Margen JULIA-RD</span><div class="fixed">10 %</div></div>
       <div class="field"><span class="lbl">GMF</span><div class="fixed">4 × 1.000</div></div>
     </div>
     <div class="scroll"><table class="parttbl ddv">
@@ -325,7 +325,7 @@ let DATA=PLANTS.Naturmega;
 const PMAX={max:8000,step:2000};
 let LBCAVG=0;
 const DAYS=[['Lunes','Lunes'],['Martes','Martes'],['Miercoles','Miércoles'],['Jueves','Jueves'],['Viernes','Viernes'],['Sabado','Sábado'],['Domingo','Domingo']];
-const MARGIN=0.06, GMF=0.004, TOL=5, GRACE_END='2027-05'; // primeros 6 meses: nov. 2026 a abr. 2027
+const MARGIN=0.10, GMF=0.004, TOL=5, GRACE_END='2027-05'; // primeros 6 meses: nov. 2026 a abr. 2027
 /* Festivos Colombia 2026 y 2027 (calendarios oficiales con ley Emiliani) */
 const HOLS=new Set(['2026-11-02','2026-11-16','2026-12-08','2026-12-25',
  '2027-01-01','2027-01-11','2027-03-22','2027-03-25','2027-03-26','2027-05-01','2027-05-10','2027-05-31','2027-06-07','2027-07-05','2027-07-20','2027-08-07','2027-08-16','2027-10-18','2027-11-01','2027-11-15','2027-12-08','2027-12-25']);
